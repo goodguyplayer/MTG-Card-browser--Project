@@ -8,8 +8,32 @@ Update 0.:
 - Added description
 - Added update log
 - Created class
+
+Update 0.1.:
+- Added vars
+- Added getter
+- Added named constructor - fromJson
  */
 
 class Card{
+  // Vars
+  var _name;
+  var _type;
+  var _imageUrl;
+
+  // Getters
+  get name => _name;
+  get type => _type;
+  get imageUrl => _imageUrl;
+
+
+
+// Named constructor - fromJson
+  Card.fromJson(Map<String, dynamic> json){
+    _name = json['name'];
+    _type = json['type'];
+    _imageUrl = json['imageUrl'];
+  }
+
 
 }
