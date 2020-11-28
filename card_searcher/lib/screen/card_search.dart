@@ -13,9 +13,16 @@ Update 0.1.:
 - Added main widget
 - Added "textFieldPersonalized" widget
 - Added button widget
+
+Update 0.12.:
+- Made the button widget send the user to cards_found with the variable
+- Added a method to replace spaces with +
  */
 
+import 'package:card_searcher/models/card_list.dart';
 import 'package:flutter/material.dart';
+
+import 'cards_found.dart';
 
 class CardSearch extends StatelessWidget {
 
@@ -52,7 +59,8 @@ class CardSearch extends StatelessWidget {
             titleSection,
             textFieldPersonalized(cardSearch, "Black lotus", "Card name.:", Icon(Icons.lens)),
             FlatButton(onPressed: (){
-              print(cardSearch.text);
+              // https://stackoverflow.com/questions/53861302/passing-data-between-screens-in-flutter - For data between screens
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound(text: removeSpace(cardSearch.text))));
                 }, child: Text("Adicionar")),
           ],
         ),
@@ -70,6 +78,10 @@ class CardSearch extends StatelessWidget {
           icon: icone
       ),),
     );
+  }
+
+  String removeSpace(String text){
+    return text.replaceAll(" ", "+");
   }
 
 }
