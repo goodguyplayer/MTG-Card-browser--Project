@@ -66,8 +66,8 @@ class CardSearch extends StatelessWidget {
               // https://stackoverflow.com/questions/53861302/passing-data-between-screens-in-flutter - For data between screens
               var requisicao = NetworkHelper(url:"https://api.magicthegathering.io/v1/cards?name=${removeSpace(cardSearch.text)}");
               var dados = CardList.fromJson(await requisicao.getData());
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound(cardList: dados.cardlist)));
-                }, child: Text("Adicionar")),
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound2(cardList: dados)));
+                }, child: Text("Buscar")),
           ],
         ),
       ),
