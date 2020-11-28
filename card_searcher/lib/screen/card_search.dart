@@ -7,13 +7,69 @@ Update 0.:
 - Created file
 - Added update log
 - Added stless class
+
+Update 0.1.:
+- Added title widget
+- Added main widget
+- Added "textFieldPersonalized" widget
+- Added button widget
  */
 
 import 'package:flutter/material.dart';
 
 class CardSearch extends StatelessWidget {
+
+  final cardSearch = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+
+    // TITLE
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(16),
+      color: Colors.blueAccent,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(
+              'MTG card lookup',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    // MAIN
+    return MaterialApp(
+      home: Scaffold(
+        body: ListView(
+          children: [
+            titleSection,
+            textFieldPersonalized(cardSearch, "Black lotus", "Card name.:", Icon(Icons.lens)),
+            FlatButton(onPressed: (){
+              print(cardSearch.text);
+                }, child: Text("Adicionar")),
+          ],
+        ),
+      ),
+    );
   }
+
+
+  Widget textFieldPersonalized(TextEditingController controlador, String hint, String label, Icon icone) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(controller: controlador, decoration: InputDecoration(
+          hintText: hint,
+          labelText: label,
+          icon: icone
+      ),),
+    );
+  }
+
 }

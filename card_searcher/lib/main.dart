@@ -1,6 +1,8 @@
 import 'package:card_searcher/screen/test.dart';
 import 'package:flutter/material.dart';
 
+import 'screen/card_search.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Test(),
+      home: CardSearch(),
     );
   }
 }
