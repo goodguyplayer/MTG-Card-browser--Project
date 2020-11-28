@@ -17,9 +17,13 @@ Update 0.1.:
 Update 0.12.:
 - Made the button widget send the user to cards_found with the variable
 - Added a method to replace spaces with +
+
+Update 0.13.:
+- Sending cardlist instead to cards_found.
  */
 
 import 'package:card_searcher/models/card_list.dart';
+import 'package:card_searcher/utilities/network_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'cards_found.dart';
@@ -58,9 +62,11 @@ class CardSearch extends StatelessWidget {
           children: [
             titleSection,
             textFieldPersonalized(cardSearch, "Black lotus", "Card name.:", Icon(Icons.lens)),
-            FlatButton(onPressed: (){
+            FlatButton(onPressed: () async{
               // https://stackoverflow.com/questions/53861302/passing-data-between-screens-in-flutter - For data between screens
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound(text: removeSpace(cardSearch.text))));
+              var requisicao = NetworkHelper(url:"https://api.magicthegathering.io/v1/cards?name=${removeSpace(cardSearch.text)}");
+              var dados = CardList.fromJson(await requisicao.getData());
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound(cardList: dados.cardlist)));
                 }, child: Text("Adicionar")),
           ],
         ),
@@ -83,5 +89,4 @@ class CardSearch extends StatelessWidget {
   String removeSpace(String text){
     return text.replaceAll(" ", "+");
   }
-
 }
