@@ -13,6 +13,9 @@ Update 0.1.:
 - Added vars
 - Added getter
 - Added named constructor - fromJson
+
+Update 0.12.:
+- fromJson constructor update - Verifies for null images
  */
 
 class Card{
@@ -32,7 +35,11 @@ class Card{
   Card.fromJson(Map<String, dynamic> json){
     _name = json['name'];
     _type = json['type'];
-    _imageUrl = json['imageUrl'];
+    if (json['imageUrl'] != null){
+      _imageUrl = json['imageUrl'];
+    } else {
+      _imageUrl = "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card";
+    }
   }
 
 
