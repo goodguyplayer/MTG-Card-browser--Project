@@ -24,6 +24,10 @@ Update 0.14.:
 Update 0.15.:
 - Pushing image link to CardScreen
 
+Update 0.16.:
+- Removed Stateful widget, maintaining only stateless.
+- Fixing Stateless widget for card_search
+
  */
 
 import 'package:card_searcher/models/card_list.dart';
@@ -31,47 +35,9 @@ import 'package:card_searcher/screen/card_screen.dart';
 import 'package:card_searcher/utilities/network_helper.dart';
 import 'package:flutter/material.dart';
 
-class CardsFound extends StatefulWidget {
+class CardsFound extends StatelessWidget {
   final CardList cardList;
   CardsFound({Key key, @required this.cardList}) : super(key: key);
-
-  @override
-  _CardsFoundState createState() => _CardsFoundState();
-}
-
-class _CardsFoundState extends State<CardsFound> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Encontrados. Selecione um')),
-      body: ListView(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index){
-                for(final e in widget.cardList.cardlist){
-
-                }
-                return ListTile(
-
-                  title: Text(widget.cardList.cardlist[index].name),
-                );
-              },
-              //itemCount: widget.cardList.length,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-}
-
-class CardsFound2 extends StatelessWidget {
-  final CardList cardList;
-  CardsFound2({Key key, @required this.cardList}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
