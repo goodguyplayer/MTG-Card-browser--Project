@@ -44,7 +44,6 @@ class CardsFound extends StatelessWidget {
       appBar: AppBar(title: Text('Encontrados. Selecione um')),
       body: ListView.builder(
         itemBuilder: (context, index){
-          print(cardList.cardlist.toString());
           return ListTile(
             title: Text(cardList.cardlist[index].name),
             subtitle: Text(cardList.cardlist[index].type),
