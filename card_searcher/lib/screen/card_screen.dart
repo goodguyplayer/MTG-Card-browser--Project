@@ -34,7 +34,6 @@ class CardScreen extends StatelessWidget {
             new Container(
               child: new Image.network(
                 imageUrl,
-                //height: 60.0,
                 fit: BoxFit.cover,
               ),
             ),

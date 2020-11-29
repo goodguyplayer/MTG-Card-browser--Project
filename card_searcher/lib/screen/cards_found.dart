@@ -49,7 +49,6 @@ class CardsFound extends StatelessWidget {
             title: Text(cardList.cardlist[index].name),
             subtitle: Text(cardList.cardlist[index].type),
             leading: FlatButton(onPressed: () async{
-              print('Oh hi there' + cardList.cardlist[index].name);
               Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardScreen(imageUrl: cardList.cardlist[index].imageUrl)));
             }, child: Text("Ver imagem")),
           );
