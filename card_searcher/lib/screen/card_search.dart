@@ -20,6 +20,9 @@ Update 0.12.:
 
 Update 0.13.:
 - Sending cardlist instead to cards_found.
+
+Update 0.14.:
+- Connected to cards_found.dart, changed cardlist push to CardsFound instead of CardsFound2
  */
 
 import 'package:card_searcher/models/card_list.dart';
@@ -66,7 +69,7 @@ class CardSearch extends StatelessWidget {
               // https://stackoverflow.com/questions/53861302/passing-data-between-screens-in-flutter - For data between screens
               var requisicao = NetworkHelper(url:"https://api.magicthegathering.io/v1/cards?name=${removeSpace(cardSearch.text)}");
               var dados = CardList.fromJson(await requisicao.getData());
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound2(cardList: dados)));
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound(cardList: dados)));
                 }, child: Text("Buscar")),
           ],
         ),
