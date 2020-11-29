@@ -21,9 +21,13 @@ Update 0.14.:
 - Changed widget, now displays found cards and a button to click so the user can see a bigger image.
 - Removed the previous To do. Thanks Zanini for the help!
 
+Update 0.15.:
+- Pushing image link to CardScreen
+
  */
 
 import 'package:card_searcher/models/card_list.dart';
+import 'package:card_searcher/screen/card_screen.dart';
 import 'package:card_searcher/utilities/network_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -79,11 +83,9 @@ class CardsFound2 extends StatelessWidget {
             title: Text(cardList.cardlist[index].name),
             subtitle: Text(cardList.cardlist[index].type),
             leading: FlatButton(onPressed: () async{
-              // TODO.: Make screen that displays the card image now.
               print('Oh hi there' + cardList.cardlist[index].name);
-                  //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound2(cardList: dados)));
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardScreen(imageUrl: cardList.cardlist[index].imageUrl)));
             }, child: Text("Ver imagem")),
-            //leading: Image.network(cardList.cardlist[index].imageUrl),
           );
         },
         itemCount: cardList.cardlist.length,
