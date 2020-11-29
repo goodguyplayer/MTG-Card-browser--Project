@@ -16,7 +16,7 @@ class Test extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.send),
         onPressed: () async{
-          var requisicao = NetworkHelper(url:"https://api.magicthegathering.io/v1/cards?name=nissa|jace");
+          var requisicao = NetworkHelper(url:"https://api.magicthegathering.io/v1/cards?name=black+lotus");
           var dados = CardList.fromJson(await requisicao.getData());
 
           for(final e in dados.cardlist){

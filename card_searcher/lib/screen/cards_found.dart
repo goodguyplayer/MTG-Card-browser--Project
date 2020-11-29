@@ -16,6 +16,11 @@ Update 0.12.:
 
 Update 0.13.:
 - Removed method getCards, now handled by card_search.dart
+
+Update 0.14.:
+- Changed widget, now displays found cards and a button to click so the user can see a bigger image.
+- Removed the previous To do. Thanks Zanini for the help!
+
  */
 
 import 'package:card_searcher/models/card_list.dart';
@@ -67,22 +72,22 @@ class CardsFound2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Encontrados. Selecione um')),
-      body: ListView(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index){
-                return ListTile(
-                  title: Text(cardList.cardlist[index].name),
-                );
-              },
-              itemCount: cardList.cardlist.length,
-            ),
-          )
-        ],
+      body: ListView.builder(
+        itemBuilder: (context, index){
+          print(cardList.cardlist.toString());
+          return ListTile(
+            title: Text(cardList.cardlist[index].name),
+            subtitle: Text(cardList.cardlist[index].type),
+            leading: FlatButton(onPressed: () async{
+              // TODO.: Make screen that displays the card image now.
+              print('Oh hi there' + cardList.cardlist[index].name);
+                  //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CardsFound2(cardList: dados)));
+            }, child: Text("Ver imagem")),
+            //leading: Image.network(cardList.cardlist[index].imageUrl),
+          );
+        },
+        itemCount: cardList.cardlist.length,
       ),
     );
   }
 }
-
-// TODO Understand why it's not working. Trying to send cardList and make a list of all cards to be shown at the screen, doesn't seem to be working for unknown reasons.
